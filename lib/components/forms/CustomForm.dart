@@ -37,6 +37,7 @@ class _CustomFormState extends State<CustomForm> {
                 fontWeight: AppFonts.fontWeightRegular,
                 color: AppColors.textColorNormalBlack,
                 widthFactor: 0.5,
+                heightFactor: 0.01,
             ),
           ],
         ),

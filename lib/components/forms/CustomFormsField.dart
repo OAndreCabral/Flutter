@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/theme/AppTheme.dart';
 
@@ -6,11 +5,12 @@ class CustomFormField extends StatelessWidget {
   final String labelText;
   final String hintText;
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputType keyboardType;
 
   final double fontSize;
-  final double? widthFactor;
+  final double widthFactor;
+  final double heightFactor;
 
   final FontWeight fontWeight;
   final bool obscureText;
@@ -22,32 +22,33 @@ class CustomFormField extends StatelessWidget {
     super.key,
     required this.labelText,
     required this.hintText,
-    required this.controller,
+    this.controller,
     required this.keyboardType,
     required this.obscureText,
     this.validator,
     required this.fontSize,
     required this.fontWeight,
     required this.color,
-    required this.widthFactor
+    required this.widthFactor,
+    required this.heightFactor,
   });
 
   @override
   Widget build(BuildContext context) {
-    var screenHeight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    double width = (widthFactor != null) ? screenWidth * widthFactor! : screenWidth;
+    //double width = (widthFactor != null) ? screenWidth * widthFactor! : screenWidth;
 
     return SizedBox(
-      height: screenHeight * 1,
-      width: width,
+      height: screenHeight * heightFactor,
+      width: screenWidth * widthFactor,
       child: Column(
         children: [
           TextFormField(
             controller: controller,
             keyboardType: keyboardType,
-            obscureText: obscureText,
             validator: validator,
+            obscureText: obscureText,
             decoration: InputDecoration(
               labelText: labelText,
               labelStyle: TextStyle(
