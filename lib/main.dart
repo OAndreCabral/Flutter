@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projects/components/forms/CustomForm.dart';
-import 'package:projects/components/forms/CustomFormsField.dart';
-import 'package:projects/components/images/CustomBackgroundImage.dart';
-import 'package:projects/components/texts/CustomResponsiveText.dart';
-import 'package:projects/theme/AppTheme.dart';
 
 void main() {
   runApp(const MyApp());

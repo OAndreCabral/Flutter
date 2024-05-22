@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projects/components/forms/CustomFormsField.dart';
-import 'package:projects/components/texts/CustomResponsiveText.dart';
 import 'package:projects/theme/AppTheme.dart';
 
 class CustomForm extends StatefulWidget {
@@ -41,7 +40,7 @@ class _CustomFormState extends State<CustomForm> {
                 fontWeight: AppFonts.fontWeightRegular,
                 color: AppColors.textColorNormalBlack
             ),
-            SizedBox(height: screenHeight * 0.9,),
+            SizedBox(height: screenHeight * 0.9, width: screenWidth * 0.5,),
           ],
         ),
       ),
