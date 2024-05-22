@@ -15,14 +15,11 @@ class _CustomFormState extends State<CustomForm> {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-    var screenHeight = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CustomFormField(
                 labelText: 'Nome',
@@ -34,13 +31,13 @@ class _CustomFormState extends State<CustomForm> {
                   }
                   return null;
                 },
-                keyboardType: TextInputType.numberWithOptions(),
+                keyboardType: const TextInputType.numberWithOptions(),
                 obscureText: false,
                 fontSize: AppFonts.fontSizeFifteen,
                 fontWeight: AppFonts.fontWeightRegular,
-                color: AppColors.textColorNormalBlack
+                color: AppColors.textColorNormalBlack,
+                widthFactor: 0.5,
             ),
-            SizedBox(height: screenHeight * 0.9, width: screenWidth * 0.5,),
           ],
         ),
       ),

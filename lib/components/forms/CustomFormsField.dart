@@ -10,6 +10,8 @@ class CustomFormField extends StatelessWidget {
   final TextInputType keyboardType;
 
   final double fontSize;
+  final double? widthFactor;
+
   final FontWeight fontWeight;
   final bool obscureText;
   final Color color;
@@ -26,62 +28,65 @@ class CustomFormField extends StatelessWidget {
     this.validator,
     required this.fontSize,
     required this.fontWeight,
-    required this.color
+    required this.color,
+    required this.widthFactor
   });
 
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
-    var screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double width = (widthFactor != null) ? screenWidth * widthFactor! : screenWidth;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.0),
-      child: SizedBox(
-        height: screenHeight * 0.08,
-        width: screenWidth * 1,
-        child: TextFormField(
-          controller: controller,
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          validator: validator,
-          decoration: InputDecoration(
-            labelText: labelText,
-            labelStyle: TextStyle(
-              color: AppColors.textColorNormalBlack,
-              fontSize: fontSize,
-              fontWeight: fontWeight,
+    return SizedBox(
+      height: screenHeight * 1,
+      width: width,
+      child: Column(
+        children: [
+          TextFormField(
+            controller: controller,
+            keyboardType: keyboardType,
+            obscureText: obscureText,
+            validator: validator,
+            decoration: InputDecoration(
+              labelText: labelText,
+              labelStyle: TextStyle(
+                color: AppColors.textColorNormalBlack,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+              ),
+              hintText: hintText,
+              hintStyle: TextStyle(
+                color: color,
+                fontSize: fontSize,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: color,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: color,
+                ),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: color,
+                ),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: color,
+                ),
+              ),
             ),
-            hintText: hintText,
-            hintStyle: TextStyle(
+            style: TextStyle(
               color: color,
               fontSize: fontSize,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: color,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: color,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: color,
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: color,
-              ),
-            ),
           ),
-          style: TextStyle(
-            color: color,
-            fontSize: fontSize,
-          ),
-        ),
+        ],
       ),
     );
   }
