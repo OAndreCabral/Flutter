@@ -9,8 +9,7 @@ class CustomFormField extends StatelessWidget {
   final TextInputType keyboardType;
 
   final double fontSize;
-  final double widthFactor;
-  final double heightFactor;
+  final double borderRadiusFactor;
 
   final FontWeight fontWeight;
   final bool obscureText;
@@ -29,66 +28,60 @@ class CustomFormField extends StatelessWidget {
     required this.fontSize,
     required this.fontWeight,
     required this.color,
-    required this.widthFactor,
-    required this.heightFactor,
+    required this.borderRadiusFactor,
   });
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     //double width = (widthFactor != null) ? screenWidth * widthFactor! : screenWidth;
 
-    return SizedBox(
-      height: screenHeight * heightFactor,
-      width: screenWidth * widthFactor,
-      child: Column(
-        children: [
-          TextFormField(
-            controller: controller,
-            keyboardType: keyboardType,
-            validator: validator,
-            obscureText: obscureText,
-            decoration: InputDecoration(
-              labelText: labelText,
-              labelStyle: TextStyle(
-                color: AppColors.textColorNormalBlack,
-                fontSize: fontSize,
-                fontWeight: fontWeight,
-              ),
-              hintText: hintText,
-              hintStyle: TextStyle(
-                color: color,
-                fontSize: fontSize,
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: color,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: color,
-                ),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: color,
-                ),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: color,
-                ),
-              ),
+    return Column(
+      children: [
+        TextFormField(
+          controller: controller,
+          keyboardType: keyboardType,
+          validator: validator,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            labelText: labelText,
+            labelStyle: TextStyle(
+              color: AppColors.textColorNormalBlack,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
             ),
-            style: TextStyle(
+            hintText: hintText,
+            hintStyle: TextStyle(
               color: color,
               fontSize: fontSize,
             ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadiusFactor),
+              borderSide: BorderSide(
+                color: color,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: color,
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: color,
+              ),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: color,
+              ),
+            ),
           ),
-        ],
-      ),
+          style: TextStyle(
+            color: color,
+            fontSize: fontSize,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   } else {
                     return Column(
                       children: [
-                        Backgroundimage(imagePath: "./background.png"),
+                        CustomBackgroundImage(imagePath: "./background.png"),
                         const SizedBox(height: 30),
                         if (Platform.isIOS)
                           const CupertinoActivityIndicator(

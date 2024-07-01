@@ -34,4 +34,6 @@ class AppFonts {
   static const double fontSizeForty = 40.0;
   static const double fontSizeFortyEight = 48.0;
 
+  static const double borderRadiusTwentyFour = 24.0;
+
 }
